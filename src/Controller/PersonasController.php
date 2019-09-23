@@ -18,6 +18,9 @@ class PersonasController extends AppController
      */
     public function index()
     {
+        // $personas = $this->Personas->find('all');
+        // $this->set('personas', $personas);
+        
         $personas = $this->paginate($this->Personas);
 
         $this->set(compact('personas'));
