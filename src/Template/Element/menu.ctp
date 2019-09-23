@@ -29,6 +29,9 @@
                                 <li>
                                     <?=  $this->Html->link('Crear usuario', ['controller' => 'Users', 'action' => 'add']) ?>
                                 </li>
+                                <li>
+                                    <?=  $this->Html->link('Listar Origenes', ['controller' => 'Origen', 'action' => 'index']) ?>
+                                </li>
                             </ul>
                         </li>
                     <?php endif; ?>
