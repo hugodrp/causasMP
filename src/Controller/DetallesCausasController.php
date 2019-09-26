@@ -54,7 +54,10 @@ class DetallesCausasController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The detalles causa could not be saved. Please, try again.'));
+            else
+            {
+                $this->Flash->error(__('The detalles causa could not be saved. Please, try again.'));
+            }            
         }
         $this->set(compact('detallesCausa'));
     }

@@ -15,8 +15,8 @@
             <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('first_name', ['Nombres']) ?></th>
-                <th><?= $this->Paginator->sort('last_name', ['Apellidos']) ?></th>
-                <th><?= $this->Paginator->sort('email', ['Correo electrónico']) ?></th>
+                <th><?= $this->Paginator->sort('last_name',  ['Apellidos']) ?></th>
+                <th><?= $this->Paginator->sort('email',      ['Correo electrónico']) ?></th>
                 <th>Acciones</th>
             </tr>
             </thead>

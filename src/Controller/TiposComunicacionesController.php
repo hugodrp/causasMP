@@ -54,7 +54,10 @@ class TiposComunicacionesController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The tipos comunicacione could not be saved. Please, try again.'));
+            else
+            {
+                $this->Flash->error(__('The tipos comunicacione could not be saved. Please, try again.'));
+            }            
         }
         $this->set(compact('tiposComunicacione'));
     }

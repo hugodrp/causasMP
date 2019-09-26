@@ -54,7 +54,10 @@ class DetallesComunicacionesController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The detalles comunicacione could not be saved. Please, try again.'));
+            else
+            {
+                $this->Flash->error(__('The detalles comunicacione could not be saved. Please, try again.'));
+            }            
         }
         $this->set(compact('detallesComunicacione'));
     }

@@ -8,7 +8,7 @@
 <h2><?= $user->first_name . ' ' . $user->last_name ?></h2>
     <br>
     <dl>
-        <dt>Nombre</dt>
+        <dt>Nombres</dt>
         <dd>
             <?= $user->first_name ?>
             &nbsp;

@@ -54,7 +54,10 @@ class OrigenesController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The origene could not be saved. Please, try again.'));
+            else
+            {
+                $this->Flash->error(__('The origene could not be saved. Please, try again.'));
+            }            
         }
         $this->set(compact('origene'));
     }

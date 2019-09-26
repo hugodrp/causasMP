@@ -54,7 +54,10 @@ class TiposTrabajosController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The tipos trabajo could not be saved. Please, try again.'));
+            else
+            {
+                $this->Flash->error(__('The tipos trabajo could not be saved. Please, try again.'));
+            }            
         }
         $this->set(compact('tiposTrabajo'));
     }

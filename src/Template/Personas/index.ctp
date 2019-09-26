@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Persona[]|\Cake\Collection\CollectionInterface $personas
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Persona'), ['action' => 'add']) ?></li>
@@ -13,51 +13,52 @@
         <li><?= $this->Html->link(__('List Detalles Informes'), ['controller' => 'DetallesInformes', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Detalles Informe'), ['controller' => 'DetallesInformes', 'action' => 'add']) ?></li>
     </ul>
-</nav>
-<div class="personas index large-9 medium-8 columns content">
-    <h3><?= __('Personas') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
+</nav> -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h2>Personas</h2>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+            <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('nombre') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('apellido') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('cic') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('funcionario') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('fiscal') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th><?= $this->Paginator->sort('id') ?></th>
+                <th><?= $this->Paginator->sort('nombre',      ['Nombres']) ?></th>
+                <th><?= $this->Paginator->sort('apellido',    ['Apellidos']) ?></th>
+                <th><?= $this->Paginator->sort('cic',         ['Documento de Identidad']) ?></th>
+                <th><?= $this->Paginator->sort('funcionario', ['Funcionario?']) ?></th>
+                <th><?= $this->Paginator->sort('fiscal',      ['Fiscal?']) ?></th>
+                <th>Acciones</th>
             </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($personas as $persona): ?>
-            <tr>
-                <td><?= $this->Number->format($persona->id) ?></td>
-                <td><?= h($persona->nombre) ?></td>
-                <td><?= h($persona->apellido) ?></td>
-                <td><?= h($persona->cic) ?></td>
-                <td><?= h($persona->funcionario) ?></td>
-                <td><?= h($persona->fiscal) ?></td>
-                <td><?= h($persona->created) ?></td>
-                <td><?= h($persona->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $persona->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $persona->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $persona->id], ['confirm' => __('Are you sure you want to delete # {0}?', $persona->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+            </thead>
+            <tbody>
+                <?php foreach ($personas as $persona): ?>
+                    <tr>
+                        <td><?= $this->Number->format($persona->id) ?></td>
+                        <td><?= h($persona->nombre) ?></td>
+                        <td><?= h($persona->apellido) ?></td>
+                        <td><?= h($persona->cic) ?></td>
+                        <td><?= h($persona->funcionario) ?></td>
+                        <td><?= h($persona->fiscal) ?></td>
+                        <td>
+                            <?= $this->Html->link('Ver', ['action' => 'view', $persona->id], ['class' => 'btn btn-sm btn-info']) ?>
+                            <?= $this->Html->link('Editar', ['action' => 'edit', $persona->id], ['class' => 'btn btn-sm btn-primary']) ?>
+                            <?= $this->Form->postLink('Eliminar', ['action' => 'delete', $persona->id], ['confirm' => 'Eliminar persona ?', $persona->id, 'class' => 'btn btn-sm btn-danger']) ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+            </table>
+        </div>
+
+        <div class="paginator">
+            <ul class="pagination">
+                <?= $this->Paginator->prev('< Anterior') ?>
+                <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
+                <?= $this->Paginator->next('Siguiente >') ?>
+            </ul>
+            <p><?= $this->Paginator->counter() ?></p>
+        </div>
     </div>
 </div>

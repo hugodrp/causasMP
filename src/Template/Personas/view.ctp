@@ -6,15 +6,15 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Persona'), ['action' => 'edit', $persona->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Persona'), ['action' => 'delete', $persona->id], ['confirm' => __('Are you sure you want to delete # {0}?', $persona->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Personas'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Persona'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Detalles Comunicaciones'), ['controller' => 'DetallesComunicaciones', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Detalles Comunicacione'), ['controller' => 'DetallesComunicaciones', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Detalles Informes'), ['controller' => 'DetallesInformes', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Detalles Informe'), ['controller' => 'DetallesInformes', 'action' => 'add']) ?> </li>
+        <li class="heading"><?= __('Acciones') ?></li>
+        <li><?= $this->Html->link(__('Editar Persona'), ['action' => 'edit', $persona->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Eliminar Persona'), ['action' => 'delete', $persona->id], ['confirm' => __('Estás seguro que quieres eliminar # {0}?', $persona->id)]) ?> </li>
+        <li><?= $this->Html->link(__('Listar Personas'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nueva Persona'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Listar Detalles Comunicaciones'), ['controller' => 'DetallesComunicaciones', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nuevo Detalles Comunicacione'), ['controller' => 'DetallesComunicaciones', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Listar Detalles Informes'), ['controller' => 'DetallesInformes', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nuevo Detalles Informe'), ['controller' => 'DetallesInformes', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="personas view large-9 medium-8 columns content">
