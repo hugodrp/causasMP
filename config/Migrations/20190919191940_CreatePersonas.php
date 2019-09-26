@@ -30,7 +30,7 @@ class CreatePersonas extends AbstractMigration
         ]);
         $table->addColumn('funcionario', 'enum', array('values' => 'SI, NO'));
         $table->addColumn('fiscal', 'enum', array('values' => 'SI, NO'));
-        $table->addColumn('fecha_nacimiento', 'text', [
+        $table->addColumn('fecha_nacimiento', 'date', [
             'default' => null,
             'null' => false,
         ]);
