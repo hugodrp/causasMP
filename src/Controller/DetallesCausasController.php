@@ -11,16 +11,51 @@ use App\Controller\AppController;
  */
 class DetallesCausasController extends AppController
 {
+    public function isAuthorized($user)
+    {
+        if(isset($user['role']) and $user['role'] === 'user')
+        {
+            if(in_array($this->request->action, ['add', 'index']))
+            {
+                return true;
+            }
+
+            if (in_array($this->request->action, ['edit', 'delete']))
+            {
+                // Recupera el identificador del enlace favorito
+                $id = $this->request->params['pass'][0];
+                $detallesCausa = $this->DetallesCausas->get($id);
+
+                // Controla que el enlace del usuario dueño
+                // del favorito sea igual al del usuario autenticado
+                if ($detallesCausa->user_id == $user['id'])
+                {
+                    return true;
+                }
+            }
+        }
+
+        return parent::isAuthorized($user);
+    }
+    
     /**
      * Index method
      *
      * @return \Cake\Http\Response|null
      */
     public function index()
-    {
-        $detallesCausas = $this->paginate($this->DetallesCausas);
+    // {
+    //     $detallesCausas = $this->paginate($this->DetallesCausas);
 
-        $this->set(compact('detallesCausas'));
+    //     $this->set(compact('detallesCausas'));
+    // }
+    {
+        $this->paginate = [
+            // Recupera los enlaces correspondientes al usuario logueado
+            'conditions' => ['user_id' => $this->Auth->user('id')],
+            'order' => ['id' => 'desc']
+        ];
+        $this->set('detallesCausas', $this->paginate($this->DetallesCausas));
     }
 
     /**
