@@ -29,14 +29,29 @@
                                 <li>
                                     <?=  $this->Html->link('Crear usuario', ['controller' => 'Users', 'action' => 'add']) ?>
                                 </li>
-                                <li>
-                                    <?=  $this->Html->link('Listar Origenes', ['controller' => 'Origen', 'action' => 'index']) ?>
-                                </li>
+                                <!-- <li>
+                                    <?=  $this->Html->link('Tipos Trabajos', ['controller' => 'TiposTrabajos', 'action' => 'index']) ?>
+                                </li> -->
                             </ul>
                         </li>
+
+                        <!-- <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administrativos <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <?=  $this->Html->link('Tipos Trabajos', ['controller' => 'TiposTrabajos', 'action' => 'index']) ?>
+                                </li>
+                                <li>
+                                    <?=  $this->Html->link('Orígenes', ['controller' => 'Origenes', 'action' => 'add']) ?>
+                                </li>
+                                <li>
+                                    <?=  $this->Html->link('Tipos Trabajos', ['controller' => 'TiposTrabajos', 'action' => 'index']) ?>
+                                </li>
+                            </ul>
+                        </li> -->
                     <?php endif; ?>
                     <li>
-                        <?= $this->Html->link('Mi lista', ['controller' => 'bookmarks', 'action' => 'index']) ?>
+                        <?= $this->Html->link('Mi lista', ['controller' => 'Bookmarks', 'action' => 'index']) ?>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
