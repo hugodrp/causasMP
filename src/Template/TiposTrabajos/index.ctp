@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \Cake\Datasource\EntityInterface[]|\Cake\Collection\CollectionInterface $tiposTrabajos
+ * @var \App\Model\Entity\TiposTrabajo[]|\Cake\Collection\CollectionInterface $tiposTrabajos
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -16,8 +16,7 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('descripcion') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -25,8 +24,7 @@
             <?php foreach ($tiposTrabajos as $tiposTrabajo): ?>
             <tr>
                 <td><?= $this->Number->format($tiposTrabajo->id) ?></td>
-                <td><?= h($tiposTrabajo->created) ?></td>
-                <td><?= h($tiposTrabajo->modified) ?></td>
+                <td><?= h($tiposTrabajo->descripcion) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $tiposTrabajo->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $tiposTrabajo->id]) ?>

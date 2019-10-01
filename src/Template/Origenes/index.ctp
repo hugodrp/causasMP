@@ -17,8 +17,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('nro_origen') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('descripcion') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -27,8 +26,7 @@
             <tr>
                 <td><?= $this->Number->format($origene->id) ?></td>
                 <td><?= $this->Number->format($origene->nro_origen) ?></td>
-                <td><?= h($origene->created) ?></td>
-                <td><?= h($origene->modified) ?></td>
+                <td><?= h($origene->descripcion) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $origene->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $origene->id]) ?>
