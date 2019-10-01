@@ -24,9 +24,9 @@
                 <td><?= $this->Number->format($tiposTrabajo->id) ?></td>
                 <td><?= h($tiposTrabajo->descripcion) ?></td>
                 <td>
-                    <?= $this->Html->link('Ver', ['action' => 'view', $user->id], ['class' => 'btn btn-sm btn-info']) ?>
-                    <?= $this->Html->link('Editar', ['action' => 'edit', $user->id], ['class' => 'btn btn-sm btn-primary']) ?>
-                    <?= $this->Form->postLink('Eliminar', ['action' => 'delete', $user->id], ['confirm' => 'Eliminar Tipo de Trabajo ?', 'class' => 'btn btn-sm btn-danger']) ?>
+                    <?= $this->Html->link('Ver', ['action' => 'view', $tiposTrabajo->id], ['class' => 'btn btn-sm btn-info']) ?>
+                    <?= $this->Html->link('Editar', ['action' => 'edit', $tiposTrabajo->id], ['class' => 'btn btn-sm btn-primary']) ?>
+                    <?= $this->Form->postLink('Eliminar', ['action' => 'delete', $tiposTrabajo->id], ['confirm' => 'Eliminar Tipo de Trabajo ?', 'class' => 'btn btn-sm btn-danger']) ?>
                 </td>
             </tr>
         <?php endforeach; ?>
