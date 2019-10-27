@@ -20,7 +20,9 @@ class TrabajosInformesControllerTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.TrabajosInformes'
+        'app.TrabajosInformes',
+        'app.DetallesInformes',
+        'app.TiposTrabajos'
     ];
 
     /**

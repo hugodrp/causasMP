@@ -6,6 +6,7 @@ use App\Controller\AppController;
 /**
  * TrabajosInformes Controller
  *
+ * @property \App\Model\Table\TrabajosInformesTable $TrabajosInformes
  *
  * @method \App\Model\Entity\TrabajosInforme[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
@@ -18,6 +19,9 @@ class TrabajosInformesController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['DetallesInformes', 'TiposTrabajos']
+        ];
         $trabajosInformes = $this->paginate($this->TrabajosInformes);
 
         $this->set(compact('trabajosInformes'));
@@ -33,7 +37,7 @@ class TrabajosInformesController extends AppController
     public function view($id = null)
     {
         $trabajosInforme = $this->TrabajosInformes->get($id, [
-            'contain' => []
+            'contain' => ['DetallesInformes', 'TiposTrabajos']
         ]);
 
         $this->set('trabajosInforme', $trabajosInforme);
@@ -54,12 +58,11 @@ class TrabajosInformesController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            else
-            {
-                $this->Flash->error(__('The trabajos informe could not be saved. Please, try again.'));
-            }            
+            $this->Flash->error(__('The trabajos informe could not be saved. Please, try again.'));
         }
-        $this->set(compact('trabajosInforme'));
+        $detallesInformes = $this->TrabajosInformes->DetallesInformes->find('list', ['limit' => 200]);
+        $tiposTrabajos = $this->TrabajosInformes->TiposTrabajos->find('list', ['limit' => 200]);
+        $this->set(compact('trabajosInforme', 'detallesInformes', 'tiposTrabajos'));
     }
 
     /**
@@ -83,7 +86,9 @@ class TrabajosInformesController extends AppController
             }
             $this->Flash->error(__('The trabajos informe could not be saved. Please, try again.'));
         }
-        $this->set(compact('trabajosInforme'));
+        $detallesInformes = $this->TrabajosInformes->DetallesInformes->find('list', ['limit' => 200]);
+        $tiposTrabajos = $this->TrabajosInformes->TiposTrabajos->find('list', ['limit' => 200]);
+        $this->set(compact('trabajosInforme', 'detallesInformes', 'tiposTrabajos'));
     }
 
     /**
