@@ -15,6 +15,8 @@
         <li><?= $this->Html->link(__('New Detalles Causa'), ['controller' => 'DetallesCausas', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Personas'), ['controller' => 'Personas', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Persona'), ['controller' => 'Personas', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Categorias Informes'), ['controller' => 'CategoriasInformes', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Categorias Informe'), ['controller' => 'CategoriasInformes', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="detallesInformes view large-9 medium-8 columns content">
@@ -27,6 +29,10 @@
         <tr>
             <th scope="row"><?= __('Persona') ?></th>
             <td><?= $detallesInforme->has('persona') ? $this->Html->link($detallesInforme->persona->id, ['controller' => 'Personas', 'action' => 'view', $detallesInforme->persona->id]) : '' ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Categorias Informe') ?></th>
+            <td><?= $detallesInforme->has('categorias_informe') ? $this->Html->link($detallesInforme->categorias_informe->id, ['controller' => 'CategoriasInformes', 'action' => 'view', $detallesInforme->categorias_informe->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
@@ -68,9 +74,5 @@
     <div class="row">
         <h4><?= __('Nro Nota Entrega') ?></h4>
         <?= $this->Text->autoParagraph(h($detallesInforme->nro_nota_entrega)); ?>
-    </div>
-    <div class="row">
-        <h4><?= __('Categoria Informe') ?></h4>
-        <?= $this->Text->autoParagraph(h($detallesInforme->categoria_informe)); ?>
     </div>
 </div>

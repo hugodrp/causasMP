@@ -25,7 +25,8 @@ class DetallesInformesTableTest extends TestCase
     public $fixtures = [
         'app.DetallesInformes',
         'app.DetallesCausas',
-        'app.Personas'
+        'app.Personas',
+        'app.CategoriasInformes'
     ];
 
     /**

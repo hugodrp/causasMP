@@ -12,6 +12,8 @@
         <li><?= $this->Html->link(__('New Detalles Causa'), ['controller' => 'DetallesCausas', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Personas'), ['controller' => 'Personas', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Persona'), ['controller' => 'Personas', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Categorias Informes'), ['controller' => 'CategoriasInformes', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Categorias Informe'), ['controller' => 'CategoriasInformes', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="detallesInformes index large-9 medium-8 columns content">
@@ -29,6 +31,7 @@
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('detalle_causa_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('persona_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('categoria_informe_id') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -45,6 +48,7 @@
                 <td><?= h($detallesInforme->modified) ?></td>
                 <td><?= $detallesInforme->has('detalles_causa') ? $this->Html->link($detallesInforme->detalles_causa->id, ['controller' => 'DetallesCausas', 'action' => 'view', $detallesInforme->detalles_causa->id]) : '' ?></td>
                 <td><?= $detallesInforme->has('persona') ? $this->Html->link($detallesInforme->persona->id, ['controller' => 'Personas', 'action' => 'view', $detallesInforme->persona->id]) : '' ?></td>
+                <td><?= $detallesInforme->has('categorias_informe') ? $this->Html->link($detallesInforme->categorias_informe->id, ['controller' => 'CategoriasInformes', 'action' => 'view', $detallesInforme->categorias_informe->id]) : '' ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $detallesInforme->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $detallesInforme->id]) ?>

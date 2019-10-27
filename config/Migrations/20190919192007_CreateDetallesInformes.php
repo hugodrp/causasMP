@@ -42,10 +42,6 @@ class CreateDetallesInformes extends AbstractMigration
             'default' => null,
             'null' => false,
         ]);
-        $table->addColumn('categoria_informe', 'text', [
-            'default' => null,
-            'null' => false,
-        ]);
         $table->addColumn('created', 'datetime', [
             'default' => null,
             'null' => false,
@@ -62,6 +58,9 @@ class CreateDetallesInformes extends AbstractMigration
                  ->update();
         $refTable->addColumn('persona_id', 'integer', array('signed' => 'disable'))
                  ->addForeignKey('persona_id', 'personas', 'id', array('delete' => 'CASCADE', 'update' => 'NO_ACTION'))
+                 ->update();
+        $refTable->addColumn('categoria_informe_id', 'integer', array('signed' => 'disable'))
+                 ->addForeignKey('categoria_informe_id', 'categorias_informes', 'id', array('delete' => 'CASCADE', 'update' => 'NO_ACTION'))
                  ->update();
     }
 }

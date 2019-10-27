@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\DetallesCausasTable&\Cake\ORM\Association\BelongsTo $DetallesCausas
  * @property \App\Model\Table\PersonasTable&\Cake\ORM\Association\BelongsTo $Personas
+ * @property \App\Model\Table\CategoriasInformesTable&\Cake\ORM\Association\BelongsTo $CategoriasInformes
  *
  * @method \App\Model\Entity\DetallesInforme get($primaryKey, $options = [])
  * @method \App\Model\Entity\DetallesInforme newEntity($data = null, array $options = [])
@@ -47,6 +48,10 @@ class DetallesInformesTable extends Table
         ]);
         $this->belongsTo('Personas', [
             'foreignKey' => 'persona_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('CategoriasInformes', [
+            'foreignKey' => 'categoria_informe_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -98,11 +103,6 @@ class DetallesInformesTable extends Table
             ->requirePresence('feha_entrega_informe', 'create')
             ->notEmptyDate('feha_entrega_informe');
 
-        $validator
-            ->scalar('categoria_informe')
-            ->requirePresence('categoria_informe', 'create')
-            ->notEmptyString('categoria_informe');
-
         return $validator;
     }
 
@@ -117,6 +117,7 @@ class DetallesInformesTable extends Table
     {
         $rules->add($rules->existsIn(['detalle_causa_id'], 'DetallesCausas'));
         $rules->add($rules->existsIn(['persona_id'], 'Personas'));
+        $rules->add($rules->existsIn(['categoria_informe_id'], 'CategoriasInformes'));
 
         return $rules;
     }

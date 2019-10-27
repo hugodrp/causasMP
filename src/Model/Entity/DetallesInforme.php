@@ -14,14 +14,15 @@ use Cake\ORM\Entity;
  * @property string $nro_informe_entrega
  * @property string $nro_nota_entrega
  * @property \Cake\I18n\FrozenDate $feha_entrega_informe
- * @property string $categoria_informe
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  * @property int $detalle_causa_id
  * @property int $persona_id
+ * @property int $categoria_informe_id
  *
  * @property \App\Model\Entity\DetallesCausa $detalles_causa
  * @property \App\Model\Entity\Persona $persona
+ * @property \App\Model\Entity\CategoriasInforme $categorias_informe
  */
 class DetallesInforme extends Entity
 {
@@ -42,12 +43,13 @@ class DetallesInforme extends Entity
         'nro_informe_entrega' => true,
         'nro_nota_entrega' => true,
         'feha_entrega_informe' => true,
-        'categoria_informe' => true,
         'created' => true,
         'modified' => true,
         'detalle_causa_id' => true,
         'persona_id' => true,
+        'categoria_informe_id' => true,
         'detalles_causa' => true,
-        'persona' => true
+        'persona' => true,
+        'categorias_informe' => true
     ];
 }

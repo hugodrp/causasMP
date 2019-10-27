@@ -18,6 +18,8 @@
         <li><?= $this->Html->link(__('New Detalles Causa'), ['controller' => 'DetallesCausas', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Personas'), ['controller' => 'Personas', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Persona'), ['controller' => 'Personas', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Categorias Informes'), ['controller' => 'CategoriasInformes', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Categorias Informe'), ['controller' => 'CategoriasInformes', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="detallesInformes form large-9 medium-8 columns content">
@@ -32,9 +34,9 @@
             echo $this->Form->control('nro_informe_entrega');
             echo $this->Form->control('nro_nota_entrega');
             echo $this->Form->control('feha_entrega_informe');
-            echo $this->Form->control('categoria_informe');
             echo $this->Form->control('detalle_causa_id', ['options' => $detallesCausas]);
             echo $this->Form->control('persona_id', ['options' => $personas]);
+            echo $this->Form->control('categoria_informe_id', ['options' => $categoriasInformes]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
