@@ -6,56 +6,25 @@ use App\Controller\AppController;
 /**
  * DetallesCausas Controller
  *
+ * @property \App\Model\Table\DetallesCausasTable $DetallesCausas
  *
  * @method \App\Model\Entity\DetallesCausa[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class DetallesCausasController extends AppController
 {
-    public function isAuthorized($user)
-    {
-        if(isset($user['role']) and $user['role'] === 'user')
-        {
-            if(in_array($this->request->action, ['add', 'index']))
-            {
-                return true;
-            }
-
-            if (in_array($this->request->action, ['edit', 'delete']))
-            {
-                // Recupera el identificador del enlace favorito
-                $id = $this->request->params['pass'][0];
-                $detallesCausa = $this->DetallesCausas->get($id);
-
-                // Controla que el enlace del usuario dueño
-                // del favorito sea igual al del usuario autenticado
-                if ($detallesCausa->user_id == $user['id'])
-                {
-                    return true;
-                }
-            }
-        }
-
-        return parent::isAuthorized($user);
-    }
-    
     /**
      * Index method
      *
      * @return \Cake\Http\Response|null
      */
     public function index()
-    // {
-    //     $detallesCausas = $this->paginate($this->DetallesCausas);
-
-    //     $this->set(compact('detallesCausas'));
-    // }
     {
         $this->paginate = [
-            // Recupera los enlaces correspondientes al usuario logueado
-            'conditions' => ['user_id' => $this->Auth->user('id')],
-            'order' => ['id' => 'desc']
+            'contain' => ['Circunscripciones', 'Jurisdicciones', 'Origenes', 'Dependencias', 'HechosPunibles']
         ];
-        $this->set('detallesCausas', $this->paginate($this->DetallesCausas));
+        $detallesCausas = $this->paginate($this->DetallesCausas);
+
+        $this->set(compact('detallesCausas'));
     }
 
     /**
@@ -68,7 +37,7 @@ class DetallesCausasController extends AppController
     public function view($id = null)
     {
         $detallesCausa = $this->DetallesCausas->get($id, [
-            'contain' => []
+            'contain' => ['Circunscripciones', 'Jurisdicciones', 'Origenes', 'Dependencias', 'HechosPunibles']
         ]);
 
         $this->set('detallesCausa', $detallesCausa);
@@ -89,12 +58,14 @@ class DetallesCausasController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            else
-            {
-                $this->Flash->error(__('The detalles causa could not be saved. Please, try again.'));
-            }            
+            $this->Flash->error(__('The detalles causa could not be saved. Please, try again.'));
         }
-        $this->set(compact('detallesCausa'));
+        $circunscripciones = $this->DetallesCausas->Circunscripciones->find('list', ['limit' => 200]);
+        $jurisdicciones = $this->DetallesCausas->Jurisdicciones->find('list', ['limit' => 200]);
+        $origenes = $this->DetallesCausas->Origenes->find('list', ['limit' => 200]);
+        $dependencias = $this->DetallesCausas->Dependencias->find('list', ['limit' => 200]);
+        $hechosPunibles = $this->DetallesCausas->HechosPunibles->find('list', ['limit' => 200]);
+        $this->set(compact('detallesCausa', 'circunscripciones', 'jurisdicciones', 'origenes', 'dependencias', 'hechosPunibles'));
     }
 
     /**
@@ -118,7 +89,12 @@ class DetallesCausasController extends AppController
             }
             $this->Flash->error(__('The detalles causa could not be saved. Please, try again.'));
         }
-        $this->set(compact('detallesCausa'));
+        $circunscripciones = $this->DetallesCausas->Circunscripciones->find('list', ['limit' => 200]);
+        $jurisdicciones = $this->DetallesCausas->Jurisdicciones->find('list', ['limit' => 200]);
+        $origenes = $this->DetallesCausas->Origenes->find('list', ['limit' => 200]);
+        $dependencias = $this->DetallesCausas->Dependencias->find('list', ['limit' => 200]);
+        $hechosPunibles = $this->DetallesCausas->HechosPunibles->find('list', ['limit' => 200]);
+        $this->set(compact('detallesCausa', 'circunscripciones', 'jurisdicciones', 'origenes', 'dependencias', 'hechosPunibles'));
     }
 
     /**
