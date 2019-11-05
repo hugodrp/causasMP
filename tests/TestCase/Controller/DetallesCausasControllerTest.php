@@ -20,7 +20,12 @@ class DetallesCausasControllerTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.DetallesCausas'
+        'app.DetallesCausas',
+        'app.Circunscripciones',
+        'app.Jurisdicciones',
+        'app.Origenes',
+        'app.Dependencias',
+        'app.HechosPunibles'
     ];
 
     /**
