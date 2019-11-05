@@ -4,7 +4,63 @@
  * @var \App\Model\Entity\Causa[]|\Cake\Collection\CollectionInterface $causas
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h2>
+                Causas
+                <?= $this->Html->link('<span class="glyphicon glyphicon-plus"></span> Nuevo', ['controller' => 'Causas', 'action' => 'add'], ['class' => 'btn btn-primary pull-right', 'escape' => false]); ?>
+            </h2>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th><?= $this->Paginator->sort('id') ?></th>
+                <th><?= $this->Paginator->sort('anho',          ['Año']) ?></th>
+                <th><?= $this->Paginator->sort('nro_entrada',   ['Nro. Entrada']) ?></th>
+                <th><?= $this->Paginator->sort('caratula',      ['Carátula']) ?></th>
+                <th><?= $this->Paginator->sort('unidad_fiscal', ['Unidad Fiscal']) ?></th>
+                <th><?= $this->Paginator->sort('dependencia_id', ['Dependencia']) ?></th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($causas as $causa): ?>
+            <tr>
+                <td><?= $this->Number->format($causa->id) ?></td>
+                <td><?= h($causa->anho) ?></td>
+                <td><?= h($causa->nro_entrada) ?></td>
+                <td><?= h($causa->caratula) ?></td>
+                <td><?= h($causa->unidad_fiscal) ?></td>
+
+                <td><?= $causa->has('dependencia') ? $this->Html->link($causa->dependencia->descripcion, ['controller' => 'Dependencias', 'action' => 'view', $causa->dependencia->id]) : '' ?></td>
+
+                <td>
+                    <?= $this->Html->link('Ver', ['action' => 'view', $causa->id], ['class' => 'btn btn-sm btn-info']) ?>
+                    <?= $this->Html->link('Editar', ['action' => 'edit', $causa->id], ['class' => 'btn btn-sm btn-primary']) ?>
+                    <?= $this->Form->postLink('Eliminar', ['action' => 'delete', $causa->id], ['confirm' => 'Eliminar usuario ?', 'class' => 'btn btn-sm btn-danger']) ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+            </tbody>
+            </table>
+        </div>
+
+        <div class="paginator">
+            <ul class="pagination">
+                <?= $this->Paginator->prev('< Anterior') ?>
+                <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
+                <?= $this->Paginator->next('Siguiente >') ?>
+            </ul>
+            <p><?= $this->Paginator->counter() ?></p>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Causa'), ['action' => 'add']) ?></li>
@@ -19,8 +75,8 @@
         <li><?= $this->Html->link(__('List Hechos Punibles'), ['controller' => 'HechosPunibles', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Hechos Punible'), ['controller' => 'HechosPunibles', 'action' => 'add']) ?></li>
     </ul>
-</nav>
-<div class="causas index large-9 medium-8 columns content">
+</nav> -->
+<!-- <div class="causas index large-9 medium-8 columns content">
     <h3><?= __('Causas') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
@@ -30,8 +86,6 @@
                 <th scope="col"><?= $this->Paginator->sort('nro_entrada') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('caratula') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('unidad_fiscal') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('dependencia_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('origen_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('jurisdiccion_id') ?></th>
@@ -48,8 +102,6 @@
                 <td><?= $this->Number->format($causa->nro_entrada) ?></td>
                 <td><?= h($causa->caratula) ?></td>
                 <td><?= h($causa->unidad_fiscal) ?></td>
-                <td><?= h($causa->created) ?></td>
-                <td><?= h($causa->modified) ?></td>
                 <td><?= $causa->has('dependencia') ? $this->Html->link($causa->dependencia->id, ['controller' => 'Dependencias', 'action' => 'view', $causa->dependencia->id]) : '' ?></td>
                 <td><?= $causa->has('origene') ? $this->Html->link($causa->origene->id, ['controller' => 'Origenes', 'action' => 'view', $causa->origene->id]) : '' ?></td>
                 <td><?= $causa->has('jurisdiccione') ? $this->Html->link($causa->jurisdiccione->id, ['controller' => 'Jurisdicciones', 'action' => 'view', $causa->jurisdiccione->id]) : '' ?></td>
@@ -75,3 +127,4 @@
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
 </div>
+ -->

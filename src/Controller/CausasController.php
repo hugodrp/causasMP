@@ -6,6 +6,7 @@ use App\Controller\AppController;
 /**
  * Causas Controller
  *
+ * @property \App\Model\Table\CausasTable $Causas
  *
  * @method \App\Model\Entity\Causa[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
@@ -18,6 +19,9 @@ class CausasController extends AppController
      */
     public function index()
     {
+        $this->paginate = [
+            'contain' => ['Dependencias', 'Origenes', 'Jurisdicciones', 'Circunscripciones', 'HechosPunibles']
+        ];
         $causas = $this->paginate($this->Causas);
 
         $this->set(compact('causas'));
@@ -33,7 +37,7 @@ class CausasController extends AppController
     public function view($id = null)
     {
         $causa = $this->Causas->get($id, [
-            'contain' => []
+            'contain' => ['Dependencias', 'Origenes', 'Jurisdicciones', 'Circunscripciones', 'HechosPunibles']
         ]);
 
         $this->set('causa', $causa);
@@ -56,7 +60,12 @@ class CausasController extends AppController
             }
             $this->Flash->error(__('The causa could not be saved. Please, try again.'));
         }
-        $this->set(compact('causa'));
+        $dependencias = $this->Causas->Dependencias->find('list', ['limit' => 200]);
+        $origenes = $this->Causas->Origenes->find('list', ['limit' => 200]);
+        $jurisdicciones = $this->Causas->Jurisdicciones->find('list', ['limit' => 200]);
+        $circunscripciones = $this->Causas->Circunscripciones->find('list', ['limit' => 200]);
+        $hechosPunibles = $this->Causas->HechosPunibles->find('list', ['limit' => 200]);
+        $this->set(compact('causa', 'dependencias', 'origenes', 'jurisdicciones', 'circunscripciones', 'hechosPunibles'));
     }
 
     /**
@@ -80,7 +89,12 @@ class CausasController extends AppController
             }
             $this->Flash->error(__('The causa could not be saved. Please, try again.'));
         }
-        $this->set(compact('causa'));
+        $dependencias = $this->Causas->Dependencias->find('list', ['limit' => 200]);
+        $origenes = $this->Causas->Origenes->find('list', ['limit' => 200]);
+        $jurisdicciones = $this->Causas->Jurisdicciones->find('list', ['limit' => 200]);
+        $circunscripciones = $this->Causas->Circunscripciones->find('list', ['limit' => 200]);
+        $hechosPunibles = $this->Causas->HechosPunibles->find('list', ['limit' => 200]);
+        $this->set(compact('causa', 'dependencias', 'origenes', 'jurisdicciones', 'circunscripciones', 'hechosPunibles'));
     }
 
     /**

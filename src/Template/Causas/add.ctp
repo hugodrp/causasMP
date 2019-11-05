@@ -4,7 +4,21 @@
  * @var \App\Model\Entity\Causa $causa
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="page-header">
+            <h2>Crear Registro de Causa</h2>
+        </div>
+        <?= $this->Form->create($causa, ['novalidate']) ?>
+        <fieldset>
+            <?= $this->element('causas/fields') ?>
+        </fieldset>
+        <?= $this->Form->button('Crear') ?>
+        <?= $this->Form->end() ?>
+    </div>
+</div>
+
+<!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Causas'), ['action' => 'index']) ?></li>
@@ -19,8 +33,8 @@
         <li><?= $this->Html->link(__('List Hechos Punibles'), ['controller' => 'HechosPunibles', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Hechos Punible'), ['controller' => 'HechosPunibles', 'action' => 'add']) ?></li>
     </ul>
-</nav>
-<div class="causas form large-9 medium-8 columns content">
+</nav> -->
+<!-- <div class="causas form large-9 medium-8 columns content">
     <?= $this->Form->create($causa) ?>
     <fieldset>
         <legend><?= __('Add Causa') ?></legend>
@@ -38,4 +52,4 @@
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
-</div>
+</div> -->
