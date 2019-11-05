@@ -33,7 +33,7 @@ class OrigenesTable extends Table
         parent::initialize($config);
 
         $this->setTable('origenes');
-        $this->setDisplayField('id');
+        $this->setDisplayField('descripcion');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

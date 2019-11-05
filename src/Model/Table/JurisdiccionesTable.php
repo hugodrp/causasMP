@@ -33,7 +33,7 @@ class JurisdiccionesTable extends Table
         parent::initialize($config);
 
         $this->setTable('jurisdicciones');
-        $this->setDisplayField('id');
+        $this->setDisplayField('descripcion');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

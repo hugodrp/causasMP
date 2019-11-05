@@ -33,7 +33,7 @@ class CircunscripcionesTable extends Table
         parent::initialize($config);
 
         $this->setTable('circunscripciones');
-        $this->setDisplayField('id');
+        $this->setDisplayField('circunscripcion');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

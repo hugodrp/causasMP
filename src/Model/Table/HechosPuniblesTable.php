@@ -33,7 +33,7 @@ class HechosPuniblesTable extends Table
         parent::initialize($config);
 
         $this->setTable('hechos_punibles');
-        $this->setDisplayField('id');
+        $this->setDisplayField('titulo');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

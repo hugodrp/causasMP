@@ -33,7 +33,7 @@ class CategoriasInformesTable extends Table
         parent::initialize($config);
 
         $this->setTable('categorias_informes');
-        $this->setDisplayField('id');
+        $this->setDisplayField('descripcion');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

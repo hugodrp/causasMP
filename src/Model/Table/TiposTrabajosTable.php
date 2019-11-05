@@ -33,7 +33,7 @@ class TiposTrabajosTable extends Table
         parent::initialize($config);
 
         $this->setTable('tipos_trabajos');
-        $this->setDisplayField('id');
+        $this->setDisplayField('descripcion');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

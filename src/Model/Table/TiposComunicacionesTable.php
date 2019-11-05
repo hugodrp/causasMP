@@ -33,7 +33,7 @@ class TiposComunicacionesTable extends Table
         parent::initialize($config);
 
         $this->setTable('tipos_comunicaciones');
-        $this->setDisplayField('id');
+        $this->setDisplayField('tipo_comunicacion');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

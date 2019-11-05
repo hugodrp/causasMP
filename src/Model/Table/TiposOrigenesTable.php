@@ -33,7 +33,7 @@ class TiposOrigenesTable extends Table
         parent::initialize($config);
 
         $this->setTable('tipos_origenes');
-        $this->setDisplayField('id');
+        $this->setDisplayField('tipo_origen');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

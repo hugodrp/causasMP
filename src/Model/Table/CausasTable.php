@@ -39,7 +39,7 @@ class CausasTable extends Table
         parent::initialize($config);
 
         $this->setTable('causas');
-        $this->setDisplayField('id');
+        $this->setDisplayField('descripcion');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
