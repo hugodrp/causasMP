@@ -36,7 +36,7 @@ class PersonasTable extends Table
         parent::initialize($config);
 
         $this->setTable('personas');
-        $this->setDisplayField('id');
+        $this->setDisplayField(['apellido', 'nombre']);
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

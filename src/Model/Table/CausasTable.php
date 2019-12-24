@@ -9,10 +9,10 @@ use Cake\Validation\Validator;
 /**
  * Causas Model
  *
- * @property \App\Model\Table\DependenciasTable&\Cake\ORM\Association\BelongsTo $Dependencias
- * @property \App\Model\Table\OrigenesTable&\Cake\ORM\Association\BelongsTo $Origenes
- * @property \App\Model\Table\JurisdiccionesTable&\Cake\ORM\Association\BelongsTo $Jurisdicciones
  * @property \App\Model\Table\CircunscripcionesTable&\Cake\ORM\Association\BelongsTo $Circunscripciones
+ * @property \App\Model\Table\JurisdiccionesTable&\Cake\ORM\Association\BelongsTo $Jurisdicciones
+ * @property \App\Model\Table\OrigenesTable&\Cake\ORM\Association\BelongsTo $Origenes
+ * @property \App\Model\Table\DependenciasTable&\Cake\ORM\Association\BelongsTo $Dependencias
  * @property \App\Model\Table\HechosPuniblesTable&\Cake\ORM\Association\BelongsTo $HechosPunibles
  *
  * @method \App\Model\Entity\Causa get($primaryKey, $options = [])
@@ -44,20 +44,20 @@ class CausasTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Dependencias', [
-            'foreignKey' => 'dependencia_id',
-            'joinType' => 'INNER'
-        ]);
-        $this->belongsTo('Origenes', [
-            'foreignKey' => 'origen_id',
+        $this->belongsTo('Circunscripciones', [
+            'foreignKey' => 'circunscripcion_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Jurisdicciones', [
             'foreignKey' => 'jurisdiccion_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('Circunscripciones', [
-            'foreignKey' => 'circunscripcion_id',
+        $this->belongsTo('Origenes', [
+            'foreignKey' => 'origen_id',
+            'joinType' => 'INNER'
+        ]);
+        $this->belongsTo('Dependencias', [
+            'foreignKey' => 'dependencia_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('HechosPunibles', [
@@ -96,8 +96,19 @@ class CausasTable extends Table
 
         $validator
             ->scalar('unidad_fiscal')
+            ->maxLength('unidad_fiscal', 15)
             ->requirePresence('unidad_fiscal', 'create')
             ->notEmptyString('unidad_fiscal');
+
+        $validator
+            ->scalar('resultado')
+            ->requirePresence('resultado', 'create')
+            ->notEmptyString('resultado');
+
+        $validator
+            ->integer('tiempo_resultado')
+            ->requirePresence('tiempo_resultado', 'create')
+            ->notEmptyString('tiempo_resultado');
 
         return $validator;
     }
@@ -111,10 +122,10 @@ class CausasTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['dependencia_id'], 'Dependencias'));
-        $rules->add($rules->existsIn(['origen_id'], 'Origenes'));
-        $rules->add($rules->existsIn(['jurisdiccion_id'], 'Jurisdicciones'));
         $rules->add($rules->existsIn(['circunscripcion_id'], 'Circunscripciones'));
+        $rules->add($rules->existsIn(['jurisdiccion_id'], 'Jurisdicciones'));
+        $rules->add($rules->existsIn(['origen_id'], 'Origenes'));
+        $rules->add($rules->existsIn(['dependencia_id'], 'Dependencias'));
         $rules->add($rules->existsIn(['hecho_punible_id'], 'HechosPunibles'));
 
         return $rules;

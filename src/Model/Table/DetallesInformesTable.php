@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * DetallesInformes Model
  *
- * @property \App\Model\Table\DetallesCausasTable&\Cake\ORM\Association\BelongsTo $DetallesCausas
+ * @property &\Cake\ORM\Association\BelongsTo $Causas
  * @property \App\Model\Table\PersonasTable&\Cake\ORM\Association\BelongsTo $Personas
  * @property \App\Model\Table\CategoriasInformesTable&\Cake\ORM\Association\BelongsTo $CategoriasInformes
  *
@@ -42,8 +42,8 @@ class DetallesInformesTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('DetallesCausas', [
-            'foreignKey' => 'detalle_causa_id',
+        $this->belongsTo('Causas', [
+            'foreignKey' => 'causa_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Personas', [
@@ -69,7 +69,8 @@ class DetallesInformesTable extends Table
             ->allowEmptyString('id', null, 'create');
 
         $validator
-            ->integer('nro_nota_recibida')
+            ->scalar('nro_nota_recibida')
+            ->maxLength('nro_nota_recibida', 100)
             ->requirePresence('nro_nota_recibida', 'create')
             ->notEmptyString('nro_nota_recibida');
 
@@ -90,11 +91,13 @@ class DetallesInformesTable extends Table
 
         $validator
             ->scalar('nro_informe_entrega')
+            ->maxLength('nro_informe_entrega', 100)
             ->requirePresence('nro_informe_entrega', 'create')
             ->notEmptyString('nro_informe_entrega');
 
         $validator
             ->scalar('nro_nota_entrega')
+            ->maxLength('nro_nota_entrega', 100)
             ->requirePresence('nro_nota_entrega', 'create')
             ->notEmptyString('nro_nota_entrega');
 
@@ -115,7 +118,7 @@ class DetallesInformesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['detalle_causa_id'], 'DetallesCausas'));
+        $rules->add($rules->existsIn(['causa_id'], 'Causas'));
         $rules->add($rules->existsIn(['persona_id'], 'Personas'));
         $rules->add($rules->existsIn(['categoria_informe_id'], 'CategoriasInformes'));
 

@@ -39,7 +39,7 @@ class DetallesCausasTable extends Table
         parent::initialize($config);
 
         $this->setTable('detalles_causas');
-        $this->setDisplayField('id');
+        $this->setDisplayField(['nro_entrada', 'anho', 'unidad_fiscal']);
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
