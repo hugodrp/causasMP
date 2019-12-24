@@ -7,7 +7,7 @@ use Cake\ORM\Entity;
  * DetallesInforme Entity
  *
  * @property int $id
- * @property int $nro_nota_recibida
+ * @property string $nro_nota_recibida
  * @property \Cake\I18n\FrozenDate $fecha_nota_recibida
  * @property \Cake\I18n\FrozenDate $fecha_asignacion
  * @property \Cake\I18n\FrozenDate $fecha_inicio_informe
@@ -16,7 +16,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenDate $feha_entrega_informe
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
- * @property int $detalle_causa_id
+ * @property int $causa_id
  * @property int $persona_id
  * @property int $categoria_informe_id
  *
@@ -45,7 +45,7 @@ class DetallesInforme extends Entity
         'feha_entrega_informe' => true,
         'created' => true,
         'modified' => true,
-        'detalle_causa_id' => true,
+        'causa_id' => true,
         'persona_id' => true,
         'categoria_informe_id' => true,
         'detalles_causa' => true,

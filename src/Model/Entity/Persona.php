@@ -42,4 +42,10 @@ class Persona extends Entity
         'detalles_comunicaciones' => true,
         'detalles_informes' => true
     ];
+
+    // Concatenar nombre y apellido en un mismo campo para mostrar (ver PersonasController)
+    protected function _getName()
+    {
+        return $this->_properties['nombre'] . ' ' . $this->_properties['apellido'];
+    }
 }
