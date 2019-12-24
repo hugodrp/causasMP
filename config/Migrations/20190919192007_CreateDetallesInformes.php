@@ -13,9 +13,9 @@ class CreateDetallesInformes extends AbstractMigration
     public function change()
     {
         $table = $this->table('detalles_informes');
-        $table->addColumn('nro_nota_recibida', 'integer', [
+        $table->addColumn('nro_nota_recibida', 'string', [
             'default' => null,
-            'limit' => 11,
+            'limit' => 100,
             'null' => false,
         ]);
         $table->addColumn('fecha_nota_recibida', 'date', [
@@ -30,12 +30,14 @@ class CreateDetallesInformes extends AbstractMigration
             'default' => null,
             'null' => false,
         ]);
-        $table->addColumn('nro_informe_entrega', 'text', [
+        $table->addColumn('nro_informe_entrega', 'string', [
             'default' => null,
+            'limit' => 100,
             'null' => false,
         ]);
-        $table->addColumn('nro_nota_entrega', 'text', [
+        $table->addColumn('nro_nota_entrega', 'string', [
             'default' => null,
+            'limit' => 100,
             'null' => false,
         ]);
         $table->addColumn('feha_entrega_informe', 'date', [
@@ -53,8 +55,8 @@ class CreateDetallesInformes extends AbstractMigration
         $table->create();
 
         $refTable = $this->table('detalles_informes');
-        $refTable->addColumn('detalle_causa_id', 'integer', array('signed' => 'disable'))
-                 ->addForeignKey('detalle_causa_id', 'detalles_causas', 'id', array('delete' => 'CASCADE', 'update' => 'NO_ACTION'))
+        $refTable->addColumn('causa_id', 'integer', array('signed' => 'disable'))
+                 ->addForeignKey('causa_id', 'causas', 'id', array('delete' => 'CASCADE', 'update' => 'NO_ACTION'))
                  ->update();
         $refTable->addColumn('persona_id', 'integer', array('signed' => 'disable'))
                  ->addForeignKey('persona_id', 'personas', 'id', array('delete' => 'CASCADE', 'update' => 'NO_ACTION'))
