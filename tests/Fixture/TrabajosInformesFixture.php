@@ -47,8 +47,8 @@ class TrabajosInformesFixture extends TestFixture
             [
                 'id' => 1,
                 'observacion' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
-                'created' => '2019-10-02 14:50:42',
-                'modified' => '2019-10-02 14:50:42',
+                'created' => '2019-12-13 10:16:14',
+                'modified' => '2019-12-13 10:16:14',
                 'detalle_informe_id' => 1,
                 'tipo_trabajo_id' => 1
             ],
