@@ -20,7 +20,7 @@ class DetallesInformesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['DetallesCausas', 'Personas', 'CategoriasInformes']
+            'contain' => ['Causas', 'Personas', 'CategoriasInformes']
         ];
         $detallesInformes = $this->paginate($this->DetallesInformes);
 
@@ -37,7 +37,7 @@ class DetallesInformesController extends AppController
     public function view($id = null)
     {
         $detallesInforme = $this->DetallesInformes->get($id, [
-            'contain' => ['DetallesCausas', 'Personas', 'CategoriasInformes']
+            'contain' => ['Causas', 'Personas', 'CategoriasInformes']
         ]);
 
         $this->set('detallesInforme', $detallesInforme);
@@ -60,10 +60,10 @@ class DetallesInformesController extends AppController
             }
             $this->Flash->error(__('The detalles informe could not be saved. Please, try again.'));
         }
-        $detallesCausas = $this->DetallesInformes->DetallesCausas->find('list', ['limit' => 200]);
+        $causas = $this->DetallesInformes->Causas->find('list', ['limit' => 200]);
         $personas = $this->DetallesInformes->Personas->find('list', ['limit' => 200]);
         $categoriasInformes = $this->DetallesInformes->CategoriasInformes->find('list', ['limit' => 200]);
-        $this->set(compact('detallesInforme', 'detallesCausas', 'personas', 'categoriasInformes'));
+        $this->set(compact('detallesInforme', 'causas', 'personas', 'categoriasInformes'));
     }
 
     /**
@@ -87,10 +87,10 @@ class DetallesInformesController extends AppController
             }
             $this->Flash->error(__('The detalles informe could not be saved. Please, try again.'));
         }
-        $detallesCausas = $this->DetallesInformes->DetallesCausas->find('list', ['limit' => 200]);
+        $causas = $this->DetallesInformes->Causas->find('list', ['limit' => 200]);
         $personas = $this->DetallesInformes->Personas->find('list', ['limit' => 200]);
         $categoriasInformes = $this->DetallesInformes->CategoriasInformes->find('list', ['limit' => 200]);
-        $this->set(compact('detallesInforme', 'detallesCausas', 'personas', 'categoriasInformes'));
+        $this->set(compact('detallesInforme', 'causas', 'personas', 'categoriasInformes'));
     }
 
     /**

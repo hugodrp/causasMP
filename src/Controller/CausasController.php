@@ -20,7 +20,7 @@ class CausasController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Dependencias', 'Origenes', 'Jurisdicciones', 'Circunscripciones', 'HechosPunibles']
+            'contain' => ['Circunscripciones', 'Jurisdicciones', 'Origenes', 'Dependencias', 'HechosPunibles']
         ];
         $causas = $this->paginate($this->Causas);
 
@@ -37,7 +37,7 @@ class CausasController extends AppController
     public function view($id = null)
     {
         $causa = $this->Causas->get($id, [
-            'contain' => ['Dependencias', 'Origenes', 'Jurisdicciones', 'Circunscripciones', 'HechosPunibles']
+            'contain' => ['Circunscripciones', 'Jurisdicciones', 'Origenes', 'Dependencias', 'HechosPunibles']
         ]);
 
         $this->set('causa', $causa);
@@ -60,12 +60,12 @@ class CausasController extends AppController
             }
             $this->Flash->error(__('The causa could not be saved. Please, try again.'));
         }
-        $dependencias = $this->Causas->Dependencias->find('list', ['limit' => 200]);
-        $origenes = $this->Causas->Origenes->find('list', ['limit' => 200]);
-        $jurisdicciones = $this->Causas->Jurisdicciones->find('list', ['limit' => 200]);
         $circunscripciones = $this->Causas->Circunscripciones->find('list', ['limit' => 200]);
+        $jurisdicciones = $this->Causas->Jurisdicciones->find('list', ['limit' => 200]);
+        $origenes = $this->Causas->Origenes->find('list', ['limit' => 200]);
+        $dependencias = $this->Causas->Dependencias->find('list', ['limit' => 200]);
         $hechosPunibles = $this->Causas->HechosPunibles->find('list', ['limit' => 200]);
-        $this->set(compact('causa', 'dependencias', 'origenes', 'jurisdicciones', 'circunscripciones', 'hechosPunibles'));
+        $this->set(compact('causa', 'circunscripciones', 'jurisdicciones', 'origenes', 'dependencias', 'hechosPunibles'));
     }
 
     /**
@@ -89,12 +89,12 @@ class CausasController extends AppController
             }
             $this->Flash->error(__('The causa could not be saved. Please, try again.'));
         }
-        $dependencias = $this->Causas->Dependencias->find('list', ['limit' => 200]);
-        $origenes = $this->Causas->Origenes->find('list', ['limit' => 200]);
-        $jurisdicciones = $this->Causas->Jurisdicciones->find('list', ['limit' => 200]);
         $circunscripciones = $this->Causas->Circunscripciones->find('list', ['limit' => 200]);
+        $jurisdicciones = $this->Causas->Jurisdicciones->find('list', ['limit' => 200]);
+        $origenes = $this->Causas->Origenes->find('list', ['limit' => 200]);
+        $dependencias = $this->Causas->Dependencias->find('list', ['limit' => 200]);
         $hechosPunibles = $this->Causas->HechosPunibles->find('list', ['limit' => 200]);
-        $this->set(compact('causa', 'dependencias', 'origenes', 'jurisdicciones', 'circunscripciones', 'hechosPunibles'));
+        $this->set(compact('causa', 'circunscripciones', 'jurisdicciones', 'origenes', 'dependencias', 'hechosPunibles'));
     }
 
     /**

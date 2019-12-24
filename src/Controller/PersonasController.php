@@ -43,6 +43,13 @@ class PersonasController extends AppController
      */
     public function add()
     {
+        // Concatenar nombre y apellido en un mismo campo para mostrar (ver Entity Persona)
+        $ape_nom = $this->Personas->find('list',[
+            'keyField' => 'id',
+            'valueField' => function ($ape_nom) {
+                return $ape_nom->get('name');
+            }
+        ]);
         $persona = $this->Personas->newEntity();
         if ($this->request->is('post')) {
             $persona = $this->Personas->patchEntity($persona, $this->request->getData());
