@@ -38,6 +38,28 @@
                                 <?=  $this->Html->link('Cargar Causas', ['controller' => 'Causas', 'action' => 'add'], ['class' => 'dropdown-item']) ?>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Informes</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                <?=  $this->Html->link('Listar Informes', ['controller' => 'DetallesInformes', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                                <?=  $this->Html->link('Cargar Informes', ['controller' => 'DetallesInformes', 'action' => 'add'], ['class' => 'dropdown-item']) ?>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrativos</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                <?=  $this->Html->link('Categorías Informes', ['controller' => 'CategoriasInformes', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                                <?=  $this->Html->link('Circunscripciones', ['controller' => 'Circunscripciones', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                                <?=  $this->Html->link('Dependencias', ['controller' => 'Dependencias', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                                <?=  $this->Html->link('Hechos Punibles', ['controller' => 'HechosPunibles', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                                <?=  $this->Html->link('Jurisdicciones', ['controller' => 'Jurisdicciones', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                                <?=  $this->Html->link('Orígenes', ['controller' => 'Origenes', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                                <?=  $this->Html->link('Tipos Orígenes', ['controller' => 'TiposOrigenes', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                                <?=  $this->Html->link('Personas', ['controller' => 'Personas', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                                <?=  $this->Html->link('Tipos Comunicaciones', ['controller' => 'TiposComunicaciones', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                                <?=  $this->Html->link('Tipos Trabajos', ['controller' => 'TiposTrabajos', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                            </div>
+                        </li>
                 </ul>
                     <?php endif; ?>                
                 <ul class="nav navbar-nav navbar-right">
